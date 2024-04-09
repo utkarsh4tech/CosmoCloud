@@ -48,7 +48,7 @@ async def update_student_by_id(id:str,student: Student):
 
 async def delete_student_by_id(id:str):
     res = await collection.find_one_and_delete({"_id": ObjectId(id)})
-    if res.deleted_count == 1:
+    if res is not None:
         return True
     else:
         return False

@@ -81,7 +81,7 @@ async def patch_student(id:str,student: Student):
 )
 async def delete_student(id:str):
     res = await delete_student_by_id(id)
-    if res:
+    if res is not None:
         return {}
     else:
         raise HTTPException(404,"Student Not Found")
