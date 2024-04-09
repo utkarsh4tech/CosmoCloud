@@ -1,13 +1,14 @@
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+import os
 from bson import ObjectId
 
 from .models import Student
 
 from motor.motor_asyncio import AsyncIOMotorClient
 
-config = dotenv_values(".env")
+load_dotenv()
 
-client = AsyncIOMotorClient(config["MONGODB_CONNECTION_URI"])
+client = AsyncIOMotorClient(os.getenv('MONGODB_CONNECTION_URI'))
 database = client.StudentList
 collection = database.get_collection("student") 
 
